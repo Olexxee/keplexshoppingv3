@@ -1,4 +1,4 @@
-import type { CatalogItem } from "../../types/catalog.types";
+import type { CatalogItem } from "../../types/";
 
 export const featuredProductsData: CatalogItem[] = [
   {

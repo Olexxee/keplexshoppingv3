@@ -1,4 +1,3 @@
-// types/cart.types.ts
 export interface CartItemProduct {
   id: string;
   name: string;

@@ -1,7 +1,6 @@
 import type { Collection } from "../../../types/collection.types";
 
-export interface CollectionCardProps {
-  collection: Collection;
+export interface CollectionsProps {
+  collections: Collection[];
   className?: string;
-  showArrow?: boolean;
 }

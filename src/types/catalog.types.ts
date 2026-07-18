@@ -23,8 +23,8 @@ export interface CatalogItem {
   id: string;
   name: string;
   description?: string;
-  price: number | string;
-  compareAtPrice?: number | string;
+  price: number;
+  compareAtPrice?: number;
   images: string[];
   media: MediaObject[];
   status: ItemStatus;

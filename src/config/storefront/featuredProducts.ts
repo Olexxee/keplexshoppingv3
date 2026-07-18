@@ -1,3 +1,5 @@
+import type{ CatalogItem } from "../../types/catalog.types";
+
 export interface FeaturedProductsConfig {
   eyebrow?: string;
   title: string;
@@ -6,6 +8,12 @@ export interface FeaturedProductsConfig {
     label: string;
     href: string;
   };
+}
+
+export interface FeaturedProductsProps {
+  products: CatalogItem[];
+  loading?: boolean;
+  className?: string;
 }
 
 export const featuredProducts: FeaturedProductsConfig = {
