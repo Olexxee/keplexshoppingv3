@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { Typography } from "@/components/ui/typography";
-import { cn } from "@/lib/cn";
+import { Typography } from "../../typography/Typography";
+import { cn } from "../../../lib/cn";
 
 interface SectionHeaderProps {
   eyebrow?: string;

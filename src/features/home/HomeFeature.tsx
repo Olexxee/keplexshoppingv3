@@ -3,11 +3,13 @@ import { Categories } from "../../blocks/catalog/Categories/Categories";
 import { FeaturedProducts } from "../../blocks/catalog/FeaturedProducts/FeaturedProducts";
 import { PromotionBanner } from "../../blocks/marketing/PromotionBanner";
 import { Collections } from "../../blocks/catalog/Collections/Collections";
-
+import { Brands } from "../../blocks/catalog/Brands/Brands";
 import { useHome } from "./hooks/useHome";
 
+
+
 export function HomeFeature() {
-  const { data, loading } = useHome();
+  const { loading, featuredProducts, collections, brands } = useHome();
 
   return (
     <>
@@ -15,11 +17,12 @@ export function HomeFeature() {
 
       <Categories />
 
-      <FeaturedProducts products={data.featuredProducts} loading={loading} />
+      <FeaturedProducts products={featuredProducts} loading={loading} />
 
       <PromotionBanner />
 
-      <Collections collections={data.collections} />
+      <Collections collections={collections} />
+      <Brands brands={brands} />
     </>
   );
 }
