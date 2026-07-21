@@ -1,0 +1,36 @@
+:root {
+  /* Interactive */
+  --interactive-primary: var(--brand-primary);
+  --interactive-primary-hover: var(--brand-hover);
+  --interactive-primary-active: #a97f2c;
+
+  --interactive-secondary: var(--surface-secondary);
+  --interactive-secondary-hover: var(--surface-elevated);
+  --interactive-disabled: #d1d5db;
+
+  /* Surface */
+  --surface-hover: #f8f8f8;
+  --surface-overlay: rgba(17, 24, 39, 0.45);
+
+  /* Borders */
+  --border-hover: var(--brand-primary);
+  --border-focus: #3b82f6;
+  --border-danger: #dc2626;
+
+  /* Elevation */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-dropdown: 0 10px 24px rgba(0, 0, 0, 0.12);
+  --shadow-modal: 0 20px 48px rgba(0, 0, 0, 0.18);
+
+  /* Commerce */
+  --price-current: var(--text-primary);
+  --price-original: var(--text-muted);
+  --price-discount: #dc2626;
+
+  --stock-in: #16a34a;
+  --stock-low: #f59e0b;
+  --stock-out: #dc2626;
+
+  --rating-active: #fbbf24;
+  --rating-inactive: #d1d5db;
+}

@@ -1,6 +1,6 @@
 import { cn } from "../../../lib/cn";
-import { Drawer } from "../../../features/navigation/navigation/Drawer";
-import { Button } from "../../ui/actions/button/Button";
+import { Drawer } from "../../navigation/";
+import { Button } from "../../button/Button";
 import { Typography } from "../../typography/Typography";
 import { CartItem } from "./CartItem";
 import { CartSummary } from "./CartSummary";

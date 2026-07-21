@@ -6,4 +6,6 @@ export * from "./shadows";
 export * from "./breakpoints";
 export * from "./typography";
 export * from "./theme";
+export * from "./media";
+export * from "./motion"
 export * from "./z-index"

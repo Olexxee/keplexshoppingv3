@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "../../../lib/cn";
-import { Button } from "../../ui/actions/button/Button";
+import { Button } from "../../button";
 import { QuantityInput } from "../../form/quantity-input/QuantityInput";
 import { Spinner } from "../../feedback/Spinner";
 import { ShoppingCart, Check } from "lucide-react";

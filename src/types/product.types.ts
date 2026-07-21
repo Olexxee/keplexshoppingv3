@@ -1,3 +1,11 @@
+export interface ProductImage {
+  isPrimary: unknown;
+  id: string;
+  url: string;
+  alt?: string;
+  sortOrder: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -54,7 +62,7 @@ export interface ProductVariant {
   actualWeight: number;
   shippingType: "LOCAL" | "IMPORT" | "SEA" | "AIR";
   isActive: boolean;
-  images?: any;
+  images?: ProductImage[];
   attributes?: any;
   cbm?: number;
   chargeableWeight?: number;

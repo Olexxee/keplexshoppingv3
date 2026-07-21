@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { cn } from "../../../lib/cn";
-import { Button } from "../../ui/actions/button/Button";
+import { Button } from "../../button";
 import { Spinner } from "../../feedback/Spinner";
 import { ArrowRight } from "lucide-react";
 
