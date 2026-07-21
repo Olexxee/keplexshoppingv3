@@ -1,6 +1,7 @@
-import type { Product } from "../../../../types/product.types";
+import type { ProductInfoModel } from "../../models";
 
 export interface ProductInfoProps {
-  product: Product;
+  info: ProductInfoModel;
+
   className?: string;
 }

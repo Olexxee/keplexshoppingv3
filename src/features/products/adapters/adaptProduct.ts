@@ -1,5 +1,4 @@
-import type { ProductPresentationModel } from "../models/";
-import type { AdaptProductParams } from "../ProductFeature.types";
+import type { ProductAggregate, ProductPresentationModel } from "../models";
 import {
   adaptProductCard,
   adaptProductGallery,
@@ -9,12 +8,11 @@ import {
   adaptRelatedProducts,
 } from ".";
 
+export function adaptProduct(
+  aggregate: ProductAggregate,
+): ProductPresentationModel {
+  const { product, reviews, relatedProducts } = aggregate;
 
-export function adaptProduct({
-  product,
-  reviews,
-  relatedProducts,
-}: AdaptProductParams): ProductPresentationModel {
   return {
     info: adaptProductInfo(product),
 

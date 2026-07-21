@@ -8,7 +8,7 @@ export const Root = styled.section`
 
   align-items: start;
 
-  ${({ theme }) => theme.media.lg} {
+  ${({ theme }) => theme.media.desktop`
     grid-template-columns: 1fr;
-  }
+  `}
 `;

@@ -1,4 +1,5 @@
 export interface ProductPurchaseModel {
+  [x: string]: any;
   variantId: string;
 
   stock: number;

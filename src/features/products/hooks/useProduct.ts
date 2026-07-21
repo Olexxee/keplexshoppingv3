@@ -1,29 +1,24 @@
 import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getProduct, getProductReviews, getRelatedProducts } from "../services";
 import { adaptProduct } from "../adapters";
+import { PRODUCT_GC_TIME, PRODUCT_STALE_TIME } from "../product.constants";
+import { productKeys } from "../queryKeys";
+import { getProductDetails } from "../services";
+import type { UseProductResult } from "../ProductFeature.types";
 
-async function fetchProductData(slug: string) {
-  const [product, reviews, relatedProducts] = await Promise.all([
-    getProduct(slug),
 
-    getProductReviews(slug),
 
-    getRelatedProducts(slug),
-  ]);
-
-  return {
-    product,
-    reviews,
-    relatedProducts,
-  };
-}
-
-export function useProduct(slug: string) {
+export function useProduct(slug: string): UseProductResult {
   const query = useQuery({
-    queryKey: ["product", slug],
+    queryKey: productKeys.detail(slug),
 
-    queryFn: () => fetchProductData(slug),
+    queryFn: () => getProductDetails(slug),
+
+    enabled: !!slug,
+
+    staleTime: PRODUCT_STALE_TIME,
+
+    gcTime: PRODUCT_GC_TIME,
   });
 
   const presentation = useMemo(() => {
@@ -33,9 +28,7 @@ export function useProduct(slug: string) {
 
     return adaptProduct({
       product: query.data.product,
-
       reviews: query.data.reviews,
-
       relatedProducts: query.data.relatedProducts,
     });
   }, [query.data]);

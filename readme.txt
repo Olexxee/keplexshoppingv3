@@ -257,3 +257,28 @@ src/
 │   └── constants.ts
 │
 └── styled.d.ts
+
+
+PurchasePanel/
+├── PurchasePanel.tsx
+├── PurchasePanel.styles.ts
+├── PurchasePanel.types.ts
+└── index.ts
+
+VariantSelector/
+├── VariantSelector.tsx
+├── VariantSelector.styles.ts
+├── VariantSelector.types.ts
+└── index.ts
+
+ShippingInfo/
+├── ShippingInfo.tsx
+├── ShippingInfo.styles.ts
+├── ShippingInfo.types.ts
+└── index.ts
+
+StockInfo/
+├── StockInfo.tsx
+├── StockInfo.styles.ts
+├── StockInfo.types.ts
+└── index.ts

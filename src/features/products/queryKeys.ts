@@ -1,21 +1,23 @@
 export const productKeys = {
   all: ["products"] as const,
 
-  lists: () => [...productKeys.all, "list"] as const,
+  lists: () => [...productKeys.all, "lists"] as const,
 
   list: (filters?: unknown) => [...productKeys.lists(), filters] as const,
 
-  details: () => [...productKeys.all, "detail"] as const,
+  details: () => [...productKeys.all, "details"] as const,
 
   detail: (slug: string) => [...productKeys.details(), slug] as const,
 
-  related: (slug: string) => [...productKeys.detail(slug), "related"] as const,
+  featured: (limit?: number) =>
+    [...productKeys.all, "featured", limit] as const,
 
-  reviews: (slug: string) => [...productKeys.detail(slug), "reviews"] as const,
+  newest: (limit?: number) => [...productKeys.all, "newest", limit] as const,
 
-  featured: () => [...productKeys.all, "featured"] as const,
+  bestSellers: (limit?: number) =>
+    [...productKeys.all, "best-sellers", limit] as const,
 
-  newest: () => [...productKeys.all, "new"] as const,
+  related: (id: string) => [...productKeys.detail(id), "related"] as const,
 
-  bestSellers: () => [...productKeys.all, "best-sellers"] as const,
+  reviews: (id: string) => [...productKeys.detail(id), "reviews"] as const,
 };

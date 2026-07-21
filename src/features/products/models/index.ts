@@ -5,3 +5,4 @@ export * from "./ProductPresentation.model";
 export * from "./ProductPurchase.model";
 export * from "./ProductReview.model";
 export * from "./RelatedProducts.model";
+export * from "./ProductAggregate.model"
