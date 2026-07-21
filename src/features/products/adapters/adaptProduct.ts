@@ -8,6 +8,8 @@ import {
   adaptRelatedProducts,
 } from ".";
 
+
+
 export function adaptProduct(
   aggregate: ProductAggregate,
 ): ProductPresentationModel {

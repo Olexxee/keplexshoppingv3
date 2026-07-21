@@ -12,17 +12,21 @@ export async function getProductDetails(
     getRelatedProducts(product.id),
   ]);
 
+  const reviews =
+    reviewsResult.status === "fulfilled"
+      ? Array.isArray(reviewsResult.value)
+        ? reviewsResult.value
+        : [reviewsResult.value]
+      : [];
+
+  const relatedProducts =
+    relatedResult.status === "fulfilled"
+      ? relatedResult.value
+      : [];
+
   return {
     product,
-
-    reviews:
-      reviewsResult.status === "fulfilled"
-        ? Array.isArray(reviewsResult.value)
-          ? reviewsResult.value
-          : [reviewsResult.value]
-        : [],
-
-    relatedProducts:
-      relatedResult.status === "fulfilled" ? relatedResult.value : [],
+    reviews,
+    relatedProducts,
   };
 }

@@ -1,13 +1,13 @@
 import type { Product } from "../../../types/product.types";
-
 import type { ProductCardModel } from "../models";
-
 import {
   createAvailabilityModel,
   createPriceModel,
   getDefaultVariant,
   getPrimaryImage,
 } from "../utils";
+
+
 
 export function adaptProductCard(product: Product): ProductCardModel {
   const variant = getDefaultVariant(product);
