@@ -1,32 +1,33 @@
 import type { Product } from "../../../types/product.types";
-import type { ProductInfoModel } from "../models";
+import type { ProductInfoModel } from "../presentation";
+import { getDefaultVariant } from "../domain";
 import {
-  createAvailabilityModel,
   createPriceModel,
-  getDefaultVariant,
-} from "../utils";
+  createRatingModel,
+} from "../domain";
+import { createAvailabilityModel } from "../presentation";
 
 
 
 export function adaptProductInfo(product: Product): ProductInfoModel {
   const variant = getDefaultVariant(product);
+  const priceModel = createPriceModel(variant);
+  const ratingModel = createRatingModel(product);
+  const availabilityModel = createAvailabilityModel(variant?.stock ?? 0);
 
   return {
     brand: product.brand?.name,
 
     title: product.name,
 
-    shortDescription: product.shortDescription,
+    shortDescription: product.description,
 
     sku: variant?.sku,
 
-    price: createPriceModel(variant),
+    price: priceModel as any,
 
-    rating: {
-      value: product.avgRating ?? 0,
-      reviewCount: product.totalReviews ?? 0,
-    },
+    rating: ratingModel as any,
 
-    availability: createAvailabilityModel(variant?.stock ?? 0),
+    availability: availabilityModel as any,
   };
 }

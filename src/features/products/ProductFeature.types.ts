@@ -1,10 +1,12 @@
-import type { Product } from "../../types/product.types";
-import type { Review } from "../../types/review.types";
-import type { ProductPresentationModel } from "./models";
 import type { UseQueryResult } from "@tanstack/react-query";
+import type { Product } from "../../types/product.types";
+import type { ProductAggregate } from "./models";
+import type {ProductPresentationModel} from "./presentation/ProductPresentation.model"
 
 export interface UseProductResult {
   product?: Product;
+
+  aggregate?: ProductAggregate;
 
   presentation?: ProductPresentationModel;
 
@@ -31,26 +33,4 @@ export interface ProductFilters {
   limit?: number;
 
   sort?: string;
-}
-
-export interface AdaptProductParams {
-  product: Product;
-
-  reviews: Review[];
-
-  relatedProducts: Product[];
-}
-
-export interface UseProductResult {
-  product?: Product;
-
-  presentation?: ProductPresentationModel;
-
-  isLoading: boolean;
-
-  isFetching: boolean;
-
-  error: unknown;
-
-  refetch: () => void;
 }

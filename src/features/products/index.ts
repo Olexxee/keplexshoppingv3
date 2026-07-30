@@ -4,7 +4,7 @@ export * from "./hooks";
 
 export * from "./services";
 
-export * from "./models";
+export * from "./presentation/models";
 
 export * from "./adapters";
 

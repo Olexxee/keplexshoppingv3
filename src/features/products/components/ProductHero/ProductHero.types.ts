@@ -1,14 +1,17 @@
-import type {
-  ProductGalleryModel,
-  ProductInfoModel,
-  ProductPurchaseModel,
-} from "../../models";
-
-
+import type { ProductHeroModel } from "../../presentation/ProductHero.Model";
 
 export interface ProductHeroProps {
-  gallery: ProductGalleryModel;
-  info: ProductInfoModel;
-  purchase: ProductPurchaseModel;
-  className?: string;
+  hero: ProductHeroModel;
+
+  quantity: number;
+
+  selectedVariantId?: string;
+
+  onVariantChange?(variantId: string): void;
+
+  onQuantityChange?(quantity: number): void;
+
+  onAddToCart?(): void;
+
+  onBuyNow?(): void;
 }

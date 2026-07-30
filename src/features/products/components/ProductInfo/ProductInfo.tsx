@@ -1,26 +1,20 @@
-import { ProductPrice } from "../../../../components/commerce/price/ProductPrice";
-import { RatingStars } from "../../../../components/commerce/rating/ProductRating/ProductRating";
-import { Root, Brand, Title, Description, Meta } from "./ProductInfo.styles";
+import { Root, Brand, Title, Description } from "./ProductInfo.styles";
 import type { ProductInfoProps } from "./ProductInfo.types";
 
-
 export function ProductInfo({ info, className }: ProductInfoProps) {
-  const ratingProps = { rating: info.rating } as any;
-  const priceValue = info.price as unknown as number;
-
   return (
     <Root className={className}>
       {info.brand && <Brand>{info.brand}</Brand>}
 
       <Title>{info.title}</Title>
 
-      <Meta>
-        <RatingStars {...ratingProps} />
+      {info.rating != null && <div>Rating: {info.rating}</div>}
 
-        <span>{info.availability.label}</span>
-      </Meta>
+      {info.price != null && <div>Price: {info.price}</div>}
 
-      <ProductPrice price={priceValue} />
+      {info.availability != null && (
+        <div>Availability: {info.availability}</div>
+      )}
 
       {info.shortDescription && (
         <Description>{info.shortDescription}</Description>

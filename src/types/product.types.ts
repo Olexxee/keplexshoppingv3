@@ -46,6 +46,7 @@ export interface Product {
 }
 
 export interface ProductVariant {
+  isDefault: unknown;
   id: string;
   productId: string;
   sku: string;

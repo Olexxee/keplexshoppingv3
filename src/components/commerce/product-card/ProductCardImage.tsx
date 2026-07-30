@@ -1,11 +1,11 @@
-import { Image } from "../../../components/image";
+import { Image } from "../../image";
 import {
   BestSellerBadge,
   LowStockBadge,
   NewBadge,
   OutOfStockBadge,
   SaleBadge,
-} from "../../../components/commerce/badges";
+} from "../badges";
 import { ProductCardActions } from "./ProductCardActions";
 import {
   BadgeContainer,
@@ -13,7 +13,8 @@ import {
   ImageOverlay,
 } from "./ProductCard.styles";
 import { COMMERCE_CONFIG } from "../../../config/commerce/commerce";
-import type { ProductCardImageProps } from "./ProductCardImage.types";
+import type { ProductCardImageProps } from "./types/ProductCardImage.types";
+
 
 type ProductCardImagePropsWithActions = ProductCardImageProps & {
   isWishlisted?: boolean;

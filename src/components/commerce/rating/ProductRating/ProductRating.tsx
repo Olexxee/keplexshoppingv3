@@ -1,5 +1,4 @@
 import { Star } from "lucide-react";
-
 import { Stars } from "./ProductRating.styles";
 
 interface RatingStarsProps {
@@ -28,3 +27,5 @@ export function RatingStars({ value, size }: RatingStarsProps) {
     </Stars>
   );
 }
+
+export const Rating = RatingStars;

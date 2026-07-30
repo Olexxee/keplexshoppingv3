@@ -1,14 +1,8 @@
-import type { ProductAggregate, ProductPresentationModel } from "../models";
-import {
-  adaptProductCard,
-  adaptProductGallery,
-  adaptProductInfo,
-  adaptProductPurchase,
-  adaptProductReviews,
-  adaptRelatedProducts,
-} from ".";
-
-
+import type { ProductAggregate } from "../models";
+import { adaptProductHero, adaptProductReviews, adaptRelatedProducts } from ".";
+import type{ProductPresentationModel} from "../presentation/ProductPresentation.model"
+import { adaptProductDescription } from "./productDescription.adapter";
+import { adaptProductSpecifications } from "./productSpecification.adapter";
 
 export function adaptProduct(
   aggregate: ProductAggregate,
@@ -16,16 +10,10 @@ export function adaptProduct(
   const { product, reviews, relatedProducts } = aggregate;
 
   return {
-    info: adaptProductInfo(product),
-
-    gallery: adaptProductGallery(product),
-
-    purchase: adaptProductPurchase(product),
-
+    hero: adaptProductHero(product),
+    description: adaptProductDescription(product),
+    specifications: adaptProductSpecifications(product),
     reviews: adaptProductReviews(reviews),
-
     relatedProducts: adaptRelatedProducts(relatedProducts),
-
-    card: adaptProductCard(product),
   };
 }

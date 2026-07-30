@@ -1,6 +1,9 @@
-import { getProductBySlug, getRelatedProducts } from "../../../api/product/products.api";
+import {
+  getProductBySlug,
+  getRelatedProducts,
+} from "../../../api/product/products.api";
 import { reviewsApi } from "../../../api/reviews.api";
-import type { ProductAggregate } from "../models";
+import type { ProductAggregate } from "../models/ProductAggregate.model";
 
 export async function getProductDetails(
   slug: string,
@@ -20,9 +23,7 @@ export async function getProductDetails(
       : [];
 
   const relatedProducts =
-    relatedResult.status === "fulfilled"
-      ? relatedResult.value
-      : [];
+    relatedResult.status === "fulfilled" ? relatedResult.value : [];
 
   return {
     product,

@@ -5,3 +5,4 @@ export * from "./productInfo.adapter";
 export * from "./productPurchase.adapter";
 export * from "./productReview.adapter";
 export * from "./relatedProducts.adapter";
+export * from "./adaptProductHero"

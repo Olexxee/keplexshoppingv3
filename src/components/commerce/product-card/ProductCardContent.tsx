@@ -1,6 +1,6 @@
-import { ProductPrice } from "../../commerce/price/ProductPrice";
-import { RatingStars } from "../../commerce/rating/ProductRating/ProductRating";
-import { AddToCartButton } from "../../commerce/cart/AddToCartButton";
+import { ProductPrice } from "../../../price/ProductPrice";
+import { RatingStars } from "../../../rating/ProductRating/ProductRating";
+import { AddToCartButton } from "../../../cart/AddToCartButton";
 import {
   Brand,
   Content,
@@ -9,7 +9,7 @@ import {
   RatingRow,
   Title,
 } from "./ProductCard.styles";
-import type { ProductCardContentProps } from "./ProductCardContent.types";
+import type { ProductCardContentProps } from "./types/ProductCardContent.types";
 
 export function ProductCardContent({
   product,
@@ -28,10 +28,7 @@ export function ProductCardContent({
       <Title>{product.name}</Title>
 
       <RatingRow>
-        <RatingStars
-          value={product.avgRating ?? 0}
-          size="sm"
-        />
+        <RatingStars value={product.avgRating ?? 0} size="sm" />
       </RatingRow>
 
       <PriceRow>
@@ -45,7 +42,9 @@ export function ProductCardContent({
       <Footer>
         <AddToCartButton
           disabled={variant.stock <= 0}
-          onAddToCart={() => onAddToCart?.(product)} productId={""}        />
+          onAddToCart={() => onAddToCart?.(product)}
+          productId={""}
+        />
       </Footer>
     </Content>
   );

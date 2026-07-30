@@ -1,8 +1,9 @@
 import { forwardRef } from "react";
-import { Card } from "../../ui/card";
+import { ContentCard } from "../../cards/content-card/ContentCard";
 import { ProductCardContent } from "./ProductCardContent";
 import { ProductCardImage } from "./ProductCardImage";
-import type { ProductCardProps } from "./ProductCard.types";
+import type { ProductCardProps } from "./types/ProductCard.types";
+
 
 export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps<"div">>(
   (
@@ -10,24 +11,22 @@ export const ProductCard = forwardRef<HTMLDivElement, ProductCardProps<"div">>(
       as,
       product,
       className,
-
       onAddToCart,
       ...props
     },
     ref,
   ) => {
     return (
-      <Card
+      <ContentCard
         ref={ref}
         as={as}
         interactive
-        padding="none"
         className={className}
         {...props}
       >
         <ProductCardImage product={product} />
         <ProductCardContent product={product} onAddToCart={onAddToCart} />
-      </Card>
+      </ContentCard>
     );
   },
 );

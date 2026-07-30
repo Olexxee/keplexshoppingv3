@@ -6,41 +6,45 @@ export const Root = styled.div`
   gap: ${({ theme }) => theme.spacing.lg};
 `;
 
-export const MainImage = styled.div`
+export const Preview = styled.div`
   width: 100%;
   aspect-ratio: 1;
-  border-radius: ${({ theme }) => theme.radius.lg};
   overflow: hidden;
-  background: ${({ theme }) => theme.colors.primary[50]};
+  border-radius: ${({ theme }: { theme: any }) => theme.radius.lg};
+  background: ${({ theme }: { theme: any }) => theme.colors.surface};
+  border: 1px solid ${({ theme }: { theme: any }) => theme.colors.border};
+`;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+export const PreviewImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const ThumbnailList = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
+  gap: ${({ theme }) => theme.spacing.sm};
   overflow-x: auto;
 `;
 
 export const Thumbnail = styled.button<{ $active?: boolean }>`
   width: 72px;
   height: 72px;
+  flex-shrink: 0;
 
-  border-radius: ${({ theme }) => theme.radius.md};
+  padding: 0;
 
   overflow: hidden;
 
+  cursor: pointer;
+
+  border-radius: ${({ theme }: { theme: any }) => theme.radius.md};
+
   border: 2px solid
-    ${({ theme, $active }) =>
-      $active ? theme.colors.primary[500] : theme.colors.primary[200]};
+    ${({ theme, $active }: { theme: any; $active?: boolean }) =>
+      $active ? theme.colors.primary : theme.colors.border};
 
   background: transparent;
-
-  cursor: pointer;
 
   img {
     width: 100%;

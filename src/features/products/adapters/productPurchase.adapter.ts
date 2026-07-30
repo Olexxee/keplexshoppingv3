@@ -1,29 +1,26 @@
 import type { Product } from "../../../types/product.types";
-import type { ProductPurchaseModel } from "../models";
+import type { ProductPurchaseModel } from "../presentation";
+import { getDefaultVariant, hasVariants } from "../domain";
+import { createAvailabilityModel } from "../presentation";
 
-import {
-  getDefaultVariant,
-  hasVariants,
-} from "../utils";
 
 export function adaptProductPurchase(product: Product): ProductPurchaseModel {
   const variant = getDefaultVariant(product);
-
-  const stock = variant?.stock ?? 0;
+  const availability = createAvailabilityModel(variant?.stock ?? 0);
 
   return {
     variantId: variant?.id ?? "",
+    variants:
+      product.variants?.map((variant) => ({
+        id: variant.id,
+        label: variant.color ?? variant.size ?? variant.sku,
+        value: variant.color ?? variant.size,
 
-    quantity: 1,
-
-    minQuantity: 1,
-
-    maxQuantity: stock,
-
-    stock,
-
+        available: variant.stock > 0,
+      })) ?? [],
+    stock: availability.stock,
+    availability,
     hasVariants: hasVariants(product),
-
-    canPurchase: stock > 0,
+    canPurchase: availability.canPurchase,
   };
 }

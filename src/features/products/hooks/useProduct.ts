@@ -2,9 +2,9 @@ import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { adaptProduct } from "../adapters";
 import { PRODUCT_GC_TIME, PRODUCT_STALE_TIME } from "../product.constants";
-import { productKeys } from "../queryKeys";
-import { getProductDetails } from "../services";
+import { productKeys } from "../queryKeys"
 import type { UseProductResult } from "../ProductFeature.types";
+import { getProductDetails } from "../services/productDetails.service";
 
 
 
@@ -14,7 +14,7 @@ export function useProduct(slug: string): UseProductResult {
 
     queryFn: () => getProductDetails(slug),
 
-    enabled: !!slug,
+    enabled: Boolean(slug),
 
     staleTime: PRODUCT_STALE_TIME,
 
@@ -26,15 +26,13 @@ export function useProduct(slug: string): UseProductResult {
       return undefined;
     }
 
-    return adaptProduct({
-      product: query.data.product,
-      reviews: query.data.reviews,
-      relatedProducts: query.data.relatedProducts,
-    });
+    return adaptProduct(query.data);
   }, [query.data]);
 
   return {
     product: query.data?.product,
+
+    aggregate: query.data,
 
     presentation,
 

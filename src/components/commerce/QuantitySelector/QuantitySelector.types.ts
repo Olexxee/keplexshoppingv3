@@ -1,9 +1,9 @@
 export interface QuantitySelectorProps {
-  value?: number;
+  quantity: number;
+
   min?: number;
-  max?: number;
-  step?: number;
-  disabled?: boolean;
-  className?: string;
-  onChange?: (value: number) => void;
+
+  max: number;
+
+  onChange?(quantity: number): void;
 }

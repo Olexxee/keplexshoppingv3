@@ -1,10 +1,10 @@
 import { Root, ContentSection } from "./ProductFeature.styles";
 import { useProduct } from "./hooks";
 import { ProductHero } from "./components/ProductHero/ProductHero";
-import { ProductDescription } from "./components/ProductDescription";
-import { ProductSpecifications } from "./components/ProductSpecifications";
-import { ProductReviews } from "./components/ProductReviews";
-import { RelatedProducts } from "./components/RelatedProducts";
+import { ProductDescription } from "./components/ProductInfo/ProductInfo";
+import { ProductSpecifications } from "./components";
+import { ProductReviews } from "./components";
+import { RelatedProducts } from "./components";
 import { ProductSkeleton } from "../../components/feedback/ProductSkeleton";
 import { ErrorBoundary } from "../../components/feedback/ErrorBoundary";
 
@@ -29,16 +29,12 @@ export function ProductFeature({ slug }: ProductFeatureProps) {
 
   return (
     <Root>
-      <ProductHero
-        gallery={presentation.gallery}
-        info={presentation.info}
-        purchase={presentation.purchase}
-      />
+      <ProductHero hero={presentation.hero} quantity={0} />
 
       <ContentSection>
-        <ProductDescription />
+        <ProductDescription description={presentation.description} />
 
-        <ProductSpecifications />
+        <ProductSpecifications specifications={presentation.specifications} />
 
         <ProductReviews reviews={presentation.reviews} />
 

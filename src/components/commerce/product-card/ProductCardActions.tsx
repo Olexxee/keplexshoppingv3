@@ -3,11 +3,9 @@ import {
   QuickViewWrapper,
   WishlistButtonWrapper,
 } from "./ProductCard.styles";
-import { WishlistButton } from "../../cards/actions/WishlistButton";
-import { QuickViewButton } from "../../cards/actions/QuickViewButton";
-import type { ProductCardActionsProps } from "./ProductCardActions.types";
-
-
+import { WishlistButton } from "../../../../cards/actions/WishlistButton";
+import { QuickViewButton } from "../../../../cards/actions/QuickViewButton";
+import type { ProductCardActionsProps } from "./types/ProductCardActions.types";
 
 export function ProductCardActions({
   product,

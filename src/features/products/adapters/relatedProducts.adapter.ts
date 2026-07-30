@@ -1,5 +1,5 @@
 import type { Product } from "../../../types/product.types";
-import type { RelatedProductsModel } from "../models";
+import type { RelatedProductsModel } from "../presentation/models";
 import { adaptProductCard } from "./productCard.adapter";
 
 export function adaptRelatedProducts(

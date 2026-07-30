@@ -282,3 +282,57 @@ StockInfo/
 ├── StockInfo.styles.ts
 ├── StockInfo.types.ts
 └── index.ts
+
+features/
+└── products/
+    │
+    ├── aggregates/
+    │   ├── ProductAggregate.ts
+    │   ├── ProductCollectionAggregate.ts
+    │   └── index.ts
+    │
+    ├── adapters/
+    │   ├── adaptProduct.ts
+    │   ├── adaptProductHero.ts
+    │   ├── adaptProductGallery.ts
+    │   ├── adaptProductInfo.ts
+    │   ├── adaptProductPurchase.ts
+    │   ├── adaptProductReviews.ts
+    │   ├── adaptRelatedProducts.ts
+    │   └── index.ts
+    │
+    ├── models/
+    │   ├── ProductPresentationModel.ts
+    │   ├── ProductHeroModel.ts
+    │   ├── ProductGalleryModel.ts
+    │   ├── ProductInfoModel.ts
+    │   ├── ProductPurchaseModel.ts
+    │   ├── ProductReviewModel.ts
+    │   ├── RelatedProductsModel.ts
+    │   └── index.ts
+    │
+    ├── services/
+    │   ├── getProductDetails.ts
+    │   ├── getProducts.ts
+    │   ├── getFeaturedProducts.ts
+    │   ├── getBestSellers.ts
+    │   ├── getNewArrivals.ts
+    │   ├── getRelatedProducts.ts
+    │   └── index.ts
+    │
+    ├── hooks/
+    │   ├── useProduct.ts
+    │   ├── useProducts.ts
+    │   ├── useFeaturedProducts.ts
+    │   ├── useBestSellers.ts
+    │   ├── useNewArrivals.ts
+    │   ├── useRelatedProducts.ts
+    │   └── index.ts
+    │
+    ├── components/
+    │
+    ├── queryKeys.ts
+    ├── constants.ts
+    ├── ProductFeature.tsx
+    ├── ProductFeature.types.ts
+    └── index.ts

@@ -1,45 +1,27 @@
 import styled from "styled-components";
-import { InputBase } from "../../form/input-base";
 
 export const Root = styled.div`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[300]};
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
-export const ActionButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 2.5rem;
-  height: 2.5rem;
-
-  border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
-  border-radius: ${({ theme }) => theme.radius.md};
-
+export const Button = styled.button`
+  width: 40px;
+  height: 40px;
+  border: none;
   background: ${({ theme }) => theme.colors.neutral[50]};
-
   cursor: pointer;
 
-  transition: ${({ theme }) => theme.motion.duration.fast} ${({ theme }) => theme.motion.easing.standard};
-
-  &:hover:not(:disabled) {
+  &:hover {
     background: ${({ theme }) => theme.colors.neutral[100]};
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
   }
 `;
 
-export const QuantityInput = styled(InputBase)`
-  width: 4rem;
+export const Value = styled.div`
+  min-width: 48px;
   text-align: center;
-
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    appearance: none;
-  }
+  font-weight: 500;
 `;
