@@ -2,35 +2,25 @@ import { forwardRef } from "react";
 import { ArrowRight } from "lucide-react";
 
 import { Typography } from "../../typography/Typography";
-
 import {
   ContentCard,
   ContentCardImage,
   ContentCardOverlay,
-} from "../content-card";
+} from "../../cards/content-card";
+
 import type { CategoryCardProps } from "./CategoryCard.types";
 import type { PolymorphicRef } from "../../../types/polymorphic";
 
-// Public, generic-preserving signature
-type CategoryCardComponent = (<C extends React.ElementType = "div">(
-  props: CategoryCardProps<C> & { ref?: PolymorphicRef<C> },
-) => React.ReactElement | null) & { displayName?: string };
+type CategoryCardComponent = <C extends React.ElementType = "div">(
+  props: CategoryCardProps<C> & {
+    ref?: PolymorphicRef<C>;
+  },
+) => React.ReactElement | null;
 
-// Internal implementation: loosely typed, no generics passed to forwardRef
 const CategoryCardImpl = forwardRef<any, CategoryCardProps<any>>(
-  (
-    {
-      as,
-      image,
-      title,
-      description,
-      productCount,
-      showArrow = true,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ as, category, showArrow = true, className, ...props }, ref) => {
+    const { image, title, description, productCount } = category;
+
     return (
       <ContentCard
         ref={ref}
@@ -71,7 +61,15 @@ const CategoryCardImpl = forwardRef<any, CategoryCardProps<any>>(
             </div>
 
             {showArrow && (
-              <ArrowRight className="h-6 w-6 text-white transition-transform group-hover:translate-x-1" />
+              <ArrowRight
+                className="
+                  h-6
+                  w-6
+                  text-white
+                  transition-transform
+                  group-hover:translate-x-1
+                "
+              />
             )}
           </div>
         </ContentCardOverlay>
@@ -82,5 +80,4 @@ const CategoryCardImpl = forwardRef<any, CategoryCardProps<any>>(
 
 CategoryCardImpl.displayName = "CategoryCard";
 
-// Cast once, at the export boundary
 export const CategoryCard = CategoryCardImpl as CategoryCardComponent;

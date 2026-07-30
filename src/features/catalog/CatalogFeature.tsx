@@ -1,18 +1,35 @@
-import { Root, Content } from "./CatalogFeature.styles";
-
-import { CatalogToolbar } from "./components/CatalogToolbar";
+import { Container } from "../../components/commerce/layout/container";
+import { Section } from "../../components/commerce/layout/section";
+import { ProductSkeleton } from "../../components/feedback/Skeleton";
+import { ErrorBoundary } from "../../components/feedback/ErrorBoundary";
 import { CatalogContent } from "./components/CatalogContent";
+import { useCatalog } from "./hooks";
 
-import type { CatalogFeatureProps } from "./CatalogFeature.types";
 
-export function CatalogFeature({ presentation }: CatalogFeatureProps) {
+interface CatalogFeatureProps {
+  variant?: "homepage" | "catalog";
+}
+
+export function CatalogFeature({ variant = "catalog" }: CatalogFeatureProps) {
+  const { presentation, isLoading, error, refetch } = useCatalog();
+
+  if (isLoading) {
+    return <ProductSkeleton />;
+  }
+
+  if (error) {
+    return <ErrorBoundary onRetry={refetch} />;
+  }
+
+  if (!presentation) {
+    return null;
+  }
+
   return (
-    <Root>
-      <CatalogToolbar toolbar={presentation.toolbar} />
-
-      <Content>
-        <CatalogContent presentation={presentation} />
-      </Content>
-    </Root>
+    <Section spacing={variant === "homepage" ? "md" : "lg"}>
+      <Container>
+        <CatalogContent presentation={presentation} variant={variant} />
+      </Container>
+    </Section>
   );
 }

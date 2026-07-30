@@ -1,23 +1,12 @@
 import type { ElementType } from "react";
+import type { CategoryCardModel } from "../models";
 import type { PolymorphicComponentProps } from "../../../types/polymorphic";
 
 type CategoryCardOwnProps = {
-  /** Category image */
-  image: string;
+  category: CategoryCardModel;
 
-  /** Category title */
-  title: string;
-
-  /** Optional description */
-  description?: string;
-
-  /** Number of products */
-  productCount?: number;
-
-  /** Show arrow icon */
   showArrow?: boolean;
 
-  /** Additional class */
   className?: string;
 };
 

@@ -7,6 +7,7 @@ import type {
 } from "../../../models/commerce";
 
 export interface ProductCardModel {
+  products: ProductCardModel[];
   id: string;
 
   slug: string;

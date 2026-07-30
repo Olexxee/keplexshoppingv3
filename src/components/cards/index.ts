@@ -1,7 +1,7 @@
 export * from "./content-card";
 
 // Domain Cards
-export * from "./category-card";
+export * from "../commerce/category-card";
 export * from "./brand-card";
 export * from "./collection-card";
 export * from "./promotion-card";

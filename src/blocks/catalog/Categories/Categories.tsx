@@ -1,36 +1,28 @@
-import { Link } from "react-router-dom";
-import { categories } from "../../../config/storefront/categories";
-import { Container } from "../../../components/commerce/layout/container/Container";
-import { Section } from "../../../components/commerce/layout/section/Section";
-import { SectionHeader } from "../../../components/commerce/layout/SectionHeader";
-import { CategoryCard } from "../../../components/cards/category-card";
-import type { CategoriesProps } from "./Categories.types";
-import * as S from "./Categories.styles";
+import { ProductSkeleton } from "../../../components/feedback/Skeleton";
+import { ErrorBoundary } from "../../../components/feedback/ErrorBoundary";
+import { CategoryContent } from "./CategoryContent";
+import { useCategory } from "../../../features/catalog/hooks/useCatalog";
 
-export function Categories({ className }: CategoriesProps) {
-  return (
-    <Section spacing="xl" className={className}>
-      <Container>
-        <SectionHeader
-          eyebrow={categories.eyebrow}
-          title={categories.title}
-          description={categories.description}
-        />
+interface CategoryFeatureProps {
+  variant?: "homepage" | "catalog";
+}
 
-        <S.Grid>
-          {categories.items.map((category) => (
-            <CategoryCard
-              key={category.id}
-              as={Link}
-              to={category.href}
-              title={category.title}
-              description={category.description}
-              image={category.image}
-              productCount={category.productCount}
-            />
-          ))}
-        </S.Grid>
-      </Container>
-    </Section>
-  );
+export function CategoryFeature({
+  variant = "homepage",
+}: CategoryFeatureProps) {
+  const { presentation, isLoading, error, refetch } = useCategory();
+
+  if (isLoading) {
+    return <ProductSkeleton />;
+  }
+
+  if (error) {
+    return <ErrorBoundary onRetry={refetch} />;
+  }
+
+  if (!presentation) {
+    return null;
+  }
+
+  return <CategoryContent presentation={presentation} variant={variant} />;
 }

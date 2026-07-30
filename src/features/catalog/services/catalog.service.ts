@@ -1,21 +1,30 @@
-import { getProducts } from "../../../api/product/products.api";
-import { getCategories } from "../../../api/category.api";
-import type { CatalogAggregate } from "../models";
-import type { GetProductsParams } from "@/api/product/products.api";
+import {
+  getProducts,
+  getCategories,
+} from "../../../api/product/products.api";
+import type { GetProductsParams } from "../../../api/product/products.api";
+import type { CatalogAggregate } from "../aggregates/CatalogAggregate";
+
 
 export async function getCatalog(
-  query: GetProductsParams,
+  filters: GetProductsParams = {},
 ): Promise<CatalogAggregate> {
-  const [productsResult, categories] = await Promise.all([
-    getProducts(query),
+  const [productsResult, categoriesResult] = await Promise.all([
+    getProducts(filters),
     getCategories(),
   ]);
 
   return {
-    products: productsResult.data,
+    products: productsResult.items,
 
-    pagination: productsResult.meta,
+    categories: categoriesResult,
 
-    categories,
+    totalProducts: productsResult.total,
+
+    page: productsResult.page,
+
+    limit: productsResult.limit,
+
+    totalPages: productsResult.totalPages,
   };
 }
