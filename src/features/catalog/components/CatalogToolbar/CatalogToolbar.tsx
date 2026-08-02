@@ -1,10 +1,14 @@
 import { Root, Results } from "./CatalogToolbar.styles";
 import type { CatalogToolbarProps } from "./CatalogToolbar.types";
 
-export function CatalogToolbar({ toolbar }: CatalogToolbarProps) {
+type Props = CatalogToolbarProps & {
+  totalResults: number;
+};
+
+export function CatalogToolbar({ totalResults }: Props) {
   return (
     <Root>
-      <Results>{toolbar.totalResults} Products</Results>
+      <Results>{totalResults} Products</Results>
     </Root>
   );
 }

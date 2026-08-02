@@ -16,7 +16,7 @@ export const Content = styled.div`
 
   gap: ${({ theme }) => theme.spacing["2xl"]};
 
-  ${({ theme }) => theme.media.lg} {
+  @media (max-width: 1024px) {
     grid-template-columns: 1fr;
   }
 `;

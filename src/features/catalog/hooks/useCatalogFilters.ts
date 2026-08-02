@@ -1,7 +1,5 @@
 import { useState } from "react";
-
 import type { CatalogFilterModel } from "../models";
-
 import { DEFAULT_LIMIT, DEFAULT_PAGE } from "../catalog.constants";
 
 export function useCatalogFilters() {

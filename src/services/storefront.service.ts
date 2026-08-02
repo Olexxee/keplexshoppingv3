@@ -1,4 +1,4 @@
-import { announcements } from "../../config/storefront/announcements";
+import { announcements } from "../config/storefront/announcements";
 
 export const storefrontService = {
   getAnnouncements() {

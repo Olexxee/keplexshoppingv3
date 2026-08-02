@@ -1,15 +1,15 @@
 import { forwardRef } from "react";
 import { ArrowRight } from "lucide-react";
-
 import { Typography } from "../../typography/Typography";
 import {
   ContentCard,
   ContentCardImage,
   ContentCardOverlay,
 } from "../../cards/content-card";
-
 import type { CategoryCardProps } from "./CategoryCard.types";
 import type { PolymorphicRef } from "../../../types/polymorphic";
+
+
 
 type CategoryCardComponent = <C extends React.ElementType = "div">(
   props: CategoryCardProps<C> & {

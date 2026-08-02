@@ -1,28 +1,26 @@
 import { Hero } from "../../blocks/marketing/Hero";
-import { Categories } from "../../blocks/catalog/Categories/Categories";
-import { FeaturedProducts } from "../../blocks/catalog/FeaturedProducts/FeaturedProducts";
+import { CategoryFeature } from "../../blocks/catalog/Categories/Categories";
 import { PromotionBanner } from "../../blocks/marketing/PromotionBanner";
-import { Collections } from "../../blocks/catalog/Collections/Collections";
-import { Brands } from "../../blocks/catalog/Brands/Brands";
-import { useHome } from "./hooks/useHome";
+// import { Collections } from "../../blocks/catalog/Collections/Collections";
+// import { Brands } from "../../blocks/catalog/Brands/Brands";
+import { CatalogFeature } from "../catalog/CatalogFeature";
 
 
 
 export function HomeFeature() {
-  const { loading, featuredProducts, collections, brands } = useHome();
-
   return (
     <>
       <Hero />
 
-      <Categories />
+      <CategoryFeature variant="homepage" />
 
-      <FeaturedProducts products={featuredProducts} loading={loading} />
+      <CatalogFeature variant="homepage" />
 
       <PromotionBanner />
 
-      <Collections collections={collections} />
-      <Brands brands={brands} />
+      {/* <CollectionFeature variant="homepage" /> */}
+
+      {/* <BrandFeature variant="homepage" /> */}
     </>
   );
 }

@@ -7,31 +7,27 @@ import {
   CATALOG_STALE_TIME,
   CATALOG_GC_TIME,
 } from "../utils/catalog.constants";
-import type { GetProductsParams } from "../../../api/product/products.api";
+import { useStorefrontQuery } from "../../storefront/useStorefrontQuery";
 
 
-export function useCatalog(filters: GetProductsParams = {}) {
+
+export function useCatalog() {
+  const queryParams = useStorefrontQuery();  
   const query = useQuery({
-    queryKey: [CATALOG_QUERY_KEY, filters],
-
-    queryFn: () => getCatalog(filters),
-
+    queryKey: [CATALOG_QUERY_KEY, queryParams],
+    queryFn: () => getCatalog(queryParams),
     staleTime: CATALOG_STALE_TIME,
-
     gcTime: CATALOG_GC_TIME,
   });
 
   const presentation = useMemo(() => {
-    if (!query.data) {
-      return undefined;
-    }
+    if (!query.data) return undefined;
 
-    return adaptCatalog(query.data, filters);
-  }, [query.data, filters]);
+    return adaptCatalog(query.data as any, queryParams);
+  }, [query.data, queryParams]);
 
   return {
     ...query,
-
     presentation,
   };
 }

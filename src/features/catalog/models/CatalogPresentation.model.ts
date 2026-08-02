@@ -1,9 +1,9 @@
-import type { ProductGridModel } from "./ProductGrid.model";
 import type { PaginationModel } from "./Pagination.model";
 import type { CatalogToolbarModel } from "./CatalogToolbar.model";
 import type { ProductCardModel } from "../../products/presentation";
 import type { CategoryCardModel } from "./CategoryCard.model";
 import type { CatalogHeroModel } from "./CatalogHero.model";
+import type {CategoryGridModel} from "../../../blocks/catalog/Categories/models/CategoryGridModel"
 
 
 export interface CatalogPresentationModel {
@@ -11,6 +11,6 @@ export interface CatalogPresentationModel {
   toolbar: CatalogToolbarModel;
   product: ProductCardModel;
   categories: CategoryCardModel[];
-  grid: ProductGridModel;
+  grid: CategoryGridModel;
   pagination: PaginationModel;
 }
